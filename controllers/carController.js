@@ -113,7 +113,6 @@ export const updateCar = async (req, res) => {
 };
 
 // Delete a Car
-
 export const deleteCar = async (req, res) => {
     try {
         const car = await Car.findOne({ _id: req.params.id, userId: req.userId });
