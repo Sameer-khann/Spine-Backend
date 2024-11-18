@@ -4,17 +4,17 @@ import cloudinary from "../config/cloudinary.js";
 // Create a Car
 export const createCar = async (req, res) => {
     try {
-        console.log("Car Controller Started")
+        // console.log("Car Controller Started")
 
         const { title, description, tags } = req.body;
 
-        console.log("Destructuring Done")
+        // console.log("Destructuring Done")
         // Validate input
         if (!title) {
             return res.status(400).json({ message: "Title is required" });
         }
 
-        console.log("Title found")
+        // console.log("Title found")
 
         // Upload images to Cloudinary
 
@@ -32,7 +32,7 @@ export const createCar = async (req, res) => {
           }
           
 
-        console.log("image files set")
+        // console.log("image files set")
 
         // Create new car document
         const car = new Car({
@@ -43,10 +43,10 @@ export const createCar = async (req, res) => {
             images: imageUrls,
         });
 
-        console.log("New car created")
+        // console.log("New car created")
 
         await car.save();
-        console.log("New car saved in DB")
+        // console.log("New car saved in DB")
         res.status(201).json({ message: "Car created successfully", car });
     } catch (error) {
         res.status(500).json({ message: "Internal server error", error: error.message });
