@@ -63,7 +63,8 @@ export const login = async (req, res) => {
         // console.log("Token Created")
 
         // Set token in cookie
-        res.cookie("authToken", token, { httpOnly: true, secure: true, sameSite: "none", maxAge: 7 * 24 * 60 * 60 * 1000 });
+        res.cookie("authToken", token, { httpOnly: true,  sameSite: "none", maxAge: 7 * 24 * 60 * 60 * 1000 });
+        // secure: true,
 
         // console.log("Cookies set")
 
