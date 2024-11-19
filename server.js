@@ -14,7 +14,18 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 // app.use(cors({ origin: "http://localhost:3000", credentials: true }));
-app.use(cors({ origin: "https://samirspineassignment.netlify.app", credentials: true }));
+// app.use(cors({ origin: "https://samirspineassignment.netlify.app", credentials: true }));
+app.use(cors({
+    origin: "https://samirspineassignment.netlify.app", // Your frontend URL
+    credentials: true, // Allow cookies to be sent
+    methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
+    allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
+}));
+
+app.options("*", cors({
+    origin: "https://samirspineassignment.netlify.app",
+    credentials: true,
+}));
 
 // Routes
 app.use("/api/auth", authRoutes);
